@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -30,12 +31,18 @@ public class SplashScreen {
 		JLabel backgroundLabel = new JLabel(new ImageIcon(background));
 		backgroundLabel.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		backgroundLabel.setText("TEXTTEST");
+
+		// Position icon in bottom-left corner
 		JLabel iconLabel = new JLabel(icon);
-		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.X_AXIS));
+		iconLabel.setAlignmentX(JLabel.LEFT_ALIGNMENT); // Align to the left
+		contentPanel.add(Box.createVerticalGlue()); // Push icon to the bottom
+		contentPanel.add(iconLabel);
+
+		// Set layout for proper positioning
+		contentPanel.setLayout(new BoxLayout(contentPanel, BoxLayout.Y_AXIS));
 
 		// Add components and show animation
 		contentPanel.add(backgroundLabel);
-		contentPanel.add(iconLabel);
 		frame.setContentPane(contentPanel);
 		frame.pack();
 		frame.setLocationRelativeTo(null); // Center on screen
