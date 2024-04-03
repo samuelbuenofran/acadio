@@ -3,9 +3,11 @@ package login_utilities;
 import java.awt.*;
 import javax.swing.*;
 
-public class SplashScreen extends JFrame {
+public class NewSplashScreen extends JFrame {
 
-    public SplashScreen() {
+    private LoginScreen loginScreen;
+
+    public NewSplashScreen() {
         super("Application Splash");
         setSize(400, 300); // Adjust size as needed
         setLocationRelativeTo(null); // Center on screen
@@ -21,8 +23,16 @@ public class SplashScreen extends JFrame {
             }
             setVisible(false);
             dispose();
+            // Launch login screen after splash disappears
+            loginScreen = new LoginScreen();
+            loginScreen.setVisible(true);
         }).start();
 
         setVisible(true);
     }
+
+    public void setLoginScreen(LoginScreen loginScreen) {
+        this.loginScreen = loginScreen;
+    }
 }
+
