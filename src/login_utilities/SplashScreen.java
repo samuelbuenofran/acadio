@@ -26,3 +26,16 @@ public class SplashScreen extends JFrame {
         setVisible(true);
     }
 }
+
+/*
+ * Functions explained:
+ * 
+ * setLocationRelativeTo() -> This function is used to set the location of the JFrame to the center of the screen.
+ * If the parameter equals null, the window is placed in the center of the screen.
+ * If the parameter is a component, the window is placed in the center of the component.
+ * If the parameter is a GraphicsConfiguration, the window is placed in the center of the screen corresponding to the GraphicsConfiguration.
+ * If the component is not currently showing, or c is null, the window is centered on the screen. 
+ * If the bottom of the component is offscreen, the window is placed to the side of the Component that is closest to the center of the screen. So if the Component is on the right part of the screen, the Window is placed to its left, and visa versa.
+ * 
+ * */
+ 
