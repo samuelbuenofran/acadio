@@ -5,7 +5,7 @@ package login_utilities;
 public class SplashAndLogin {
 
 	public static void main(String[] args) {
-		NewSplashScreen splash = new NewSplashScreen();
+		SplashScreen splash = new SplashScreen();
 		LoginScreen login = new LoginScreen();
 		// Link splash screen with login screen
 		splash.setLoginScreen(login);
