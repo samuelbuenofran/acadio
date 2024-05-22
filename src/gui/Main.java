@@ -71,8 +71,10 @@ public class Main extends JWindow {
 
 				// Open the next screen
 				// new NextScreen().setVisible(true);
-				LoginScreen ls = new LoginScreen();
-				ls.setVisible(true);
+				// LoginScreen ls = new LoginScreen();
+				// ls.setVisible(true);
+				SelectUserType sut = new SelectUserType();
+				sut.setVisible(true);
 
 			}
 		}, 3000); // 3000 milliseconds = 3 seconds
