@@ -1,4 +1,4 @@
-package login_utilities;
+package prototype;
 
 import java.awt.EventQueue;
 
@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class Start extends JFrame {
+public class LoginScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -16,25 +16,21 @@ public class Start extends JFrame {
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
-			@Override
 			public void run() {
 				try {
-					Start frame = new Start();
+					LoginScreen frame = new LoginScreen();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-
-		JFrame frame = new JFrame("Application Splash Screen");
-
 	}
 
 	/**
 	 * Create the frame.
 	 */
-	public Start() {
+	public LoginScreen() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
