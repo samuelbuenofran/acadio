@@ -1,5 +1,6 @@
 package professor;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.EventQueue;
@@ -19,13 +20,14 @@ public class DashboardProfessor extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
-	static DashboardProfessor frame;
+	private JPanel mainContentPanel;
+	private CardLayout cardLayout;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					frame = new DashboardProfessor();
+					DashboardProfessor frame = new DashboardProfessor();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,19 +37,20 @@ public class DashboardProfessor extends JFrame {
 	}
 
 	public DashboardProfessor() {
-
 		setResizable(true);
-		getContentPane().setFont(new Font("Segoe UI", Font.PLAIN, 11));
 		setTitle("Dashboard Professor");
 		setSize(953, 853);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
-		getContentPane().setLayout(null);
+
+		contentPane = new JPanel();
+		contentPane.setLayout(null);
+		setContentPane(contentPane);
 
 		JPanel sideBarPanel = new JPanel();
 		sideBarPanel.setBounds(0, 0, 161, 814);
 		sideBarPanel.setBackground(new Color(128, 128, 128));
-		getContentPane().add(sideBarPanel);
+		contentPane.add(sideBarPanel);
 		sideBarPanel.setLayout(null);
 
 		JLabel lblHamburger = new JLabel("");
@@ -59,6 +62,13 @@ public class DashboardProfessor extends JFrame {
 		lblHamburger.setFont(new Font("Segoe UI", Font.PLAIN, 11));
 
 		JLabel lblHome = new JLabel("");
+		lblHome.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(mainContentPanel, "MainDashboardPanel");
+
+			}
+		});
 		lblHome.setBounds(33, 116, 94, 94);
 		sideBarPanel.add(lblHome);
 		lblHome.setHorizontalAlignment(SwingConstants.CENTER);
@@ -67,11 +77,8 @@ public class DashboardProfessor extends JFrame {
 		JLabel lblStudent = new JLabel("");
 		lblStudent.addMouseListener(new MouseAdapter() {
 			@Override
-			public void mouseClicked(MouseEvent event) {
-				StudentManagement sm = new StudentManagement();
-				frame.setContentPane(sm);
-				frame.revalidate();
-				frame.repaint();
+			public void mouseClicked(MouseEvent e) {
+				cardLayout.show(mainContentPanel, "StudentManagement");
 			}
 		});
 		lblStudent.setBounds(33, 363, 94, 94);
@@ -98,11 +105,29 @@ public class DashboardProfessor extends JFrame {
 		lblSettings.setBounds(33, 693, 94, 94);
 		sideBarPanel.add(lblSettings);
 		lblSettings.setIcon(new ImageIcon(DashboardProfessor.class.getResource("/images/gear_fluency.png")));
-		getContentPane().setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { sideBarPanel, lblHamburger,
-				lblHome, lblChat, lblRepository, lblClipboard, lblSettings }));
-		setVisible(true);
 
-		setContentPane(contentPane);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { sideBarPanel, lblHamburger, lblHome,
+				lblChat, lblRepository, lblClipboard, lblSettings }));
+
+		// Initialize the main content area with CardLayout
+		cardLayout = new CardLayout();
+		mainContentPanel = new JPanel(cardLayout);
+		mainContentPanel.setBounds(161, 0, 776, 814); // Adjusted size to fit the rest of the frame
+		contentPane.add(mainContentPanel);
+
+		// Create and add the panels to the CardLayout panel
+		JPanel homePanel = new JPanel();
+		homePanel.setBackground(Color.WHITE);
+		mainContentPanel.add(homePanel, "Home");
+
+		// Initialize each individual panel
+
+		MainDashboardPanel mainDashboardPanel = new MainDashboardPanel();
+		mainContentPanel.add(mainDashboardPanel, "MainDashboardPanel");
+
+		StudentManagement studentManagementPanel = new StudentManagement();
+		mainContentPanel.add(studentManagementPanel, "StudentManagement");
+
+		cardLayout.show(mainContentPanel, "Home"); // Show home panel by default
 	}
-
 }
