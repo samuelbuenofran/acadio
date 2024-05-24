@@ -25,6 +25,7 @@ public class DashboardProfessor extends JFrame {
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				try {
 					DashboardProfessor frame = new DashboardProfessor();
@@ -128,6 +129,8 @@ public class DashboardProfessor extends JFrame {
 		StudentManagement studentManagementPanel = new StudentManagement();
 		mainContentPanel.add(studentManagementPanel, "StudentManagement");
 
-		cardLayout.show(mainContentPanel, "Home"); // Show home panel by default
+		cardLayout.show(mainContentPanel, "MainDashboardPanel"); // Show home panel by default
+
+		// cardLayout.show(mainContentPanel, "Home"); // Show home panel by default
 	}
 }
