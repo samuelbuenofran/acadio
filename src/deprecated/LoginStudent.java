@@ -1,4 +1,5 @@
-package gui;
+package deprecated;
+
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,14 +14,14 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
-public class LoginScreen extends JFrame {
+public class LoginStudent extends JFrame {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public LoginScreen() {
+	public LoginStudent() {
 		super("Login");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
