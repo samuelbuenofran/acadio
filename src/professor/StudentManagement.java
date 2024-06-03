@@ -12,6 +12,8 @@ import javax.swing.table.DefaultTableModel;
 
 import services.BD;
 import services.MyTableModel;
+import javax.swing.JButton;
+import javax.swing.JTabbedPane;
 
 public class StudentManagement extends JPanel {
 
@@ -21,12 +23,28 @@ public class StudentManagement extends JPanel {
 	private DefaultTableModel model;
 	private JScrollPane spProdutos;
 	private BD bd;
+	/**
+	 * @wbp.nonvisual location=377,-31
+	 */
+	private final JButton button = new JButton("New button");
 
 	/**
 	 * Create the panel.
 	 */
 	public StudentManagement() {
+		setLayout(null);
+		
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBounds(48, 39, 349, 278);
+		add(tabbedPane);
+		
+		JTabbedPane tpViewTable = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addTab("Student Management", null, tpViewTable, null);
+		
+		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addTab("New tab", null, tabbedPane_2, null);
 		JLabel lblNewLabel = new JLabel("This is a test.");
+		lblNewLabel.setBounds(255, 5, 100, 25);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 		add(lblNewLabel);
 		setBounds(100, 100, 600, 500);
@@ -43,16 +61,10 @@ public class StudentManagement extends JPanel {
 	}
 
 	private void carregarTabela() {
-		String sql = "select * from produtos";
+		String sql = "SELECT * FROM produtos";
 		model = MyTableModel.getModel(bd, sql);
 		tbProdutos.setModel(model);
 		spProdutos = new JScrollPane(tbProdutos);
 		add(spProdutos, BorderLayout.CENTER);
 	}
-
-//	public static void main(String[] args) {
-//		StudentManagement sm = new StudentManagement();
-//		sm.setVisible(true);
-//	}
-
 }
