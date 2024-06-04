@@ -13,34 +13,38 @@ public class BD {
 	public ResultSet rs = null;
 
 	private final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-	private final String DATABASENAME = "java";
+	private final String DATABASENAME = "acadio";
 	private final String URL = "jdbc:sqlserver://localhost;databasename=" + DATABASENAME;
-	private final String LOGIN = "usuario";
-	private final String SENHA = "fatec";
+	private final String LOGIN = "sa";
+	private final String PASSWORD = "p@$$w0rd!";
+	// private final String INTEGRATED_SECURITY = "true";
 
 	/**
-	 * Realiza a conexão com o banco de dados
 	 * 
-	 * @return - true em caso de sucesso, ou false caso contrário
+	 * Establishes a connection with the database
+	 *
+	 * @param - none;
+	 * @return - true in case of success, or false otherwise
+	 * 
 	 */
 	public boolean getConnection() {
 		try {
 			Class.forName(DRIVER);
-			con = DriverManager.getConnection(URL, LOGIN, SENHA);
-			System.out.println("Conectou!");
+			con = DriverManager.getConnection(URL, LOGIN, PASSWORD);
+			System.out.println("Connected successfully!");
 			return true;
-		} catch (SQLException erro) {
-			System.out.println("Falha na conexão: " + erro.toString());
+		} catch (SQLException error) {
+			System.out.println("Error connecting to the database: " + error.toString());
 			return false;
 
-		} catch (ClassNotFoundException erro) {
-			System.out.println("Driver não encontrado");
+		} catch (ClassNotFoundException error) {
+			System.out.println("Error loading the driver: " + error.toString());
 		}
 		return true;
 	}
 
 	/**
-	 * Encerra a conexão e libera os objetos utilizados
+	 * Closes the connection and releases the objects used
 	 */
 	public void close() {
 

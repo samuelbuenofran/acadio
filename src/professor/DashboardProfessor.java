@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
 
@@ -41,7 +42,7 @@ public class DashboardProfessor extends JFrame {
 		setResizable(true);
 		setTitle("Dashboard Professor");
 		setSize(953, 853);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 
 		contentPane = new JPanel();

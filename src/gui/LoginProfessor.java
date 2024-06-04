@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import professor.DashboardProfessor;
@@ -50,7 +51,7 @@ public class LoginProfessor extends JFrame {
 		super("Login");
 		setResizable(false);
 		setTitle("Login as Professor");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 361, 179);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -91,7 +92,8 @@ public class LoginProfessor extends JFrame {
 					// Open the next screen
 					System.out.println("Login successful!");
 					dispose();
-					new DashboardProfessor().setVisible(true);
+					DashboardProfessor dp = new DashboardProfessor();
+					dp.setVisible(true);
 				} else {
 					System.out.println("Login failed!");
 				}
