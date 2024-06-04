@@ -41,8 +41,8 @@ public class StudentManagement extends JPanel {
 		JTabbedPane tpViewTable = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("Student Management", null, tpViewTable, null);
 		
-		JTabbedPane tabbedPane_2 = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.addTab("New tab", null, tabbedPane_2, null);
+		JTabbedPane tpAddStudent = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.addTab("Add Student", null, tpAddStudent, null);
 		JLabel lblNewLabel = new JLabel("This is a test.");
 		lblNewLabel.setBounds(255, 5, 100, 25);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
@@ -57,6 +57,11 @@ public class StudentManagement extends JPanel {
 			JOptionPane.showMessageDialog(spProdutos, "Falha na conexão");
 			System.exit(0);
 		}
+		
+		// Adding the table to the already existing tabbed pane
+		tpViewTable.add(spProdutos, BorderLayout.CENTER);
+		
+		
 
 	}
 
@@ -66,5 +71,8 @@ public class StudentManagement extends JPanel {
 		tbProdutos.setModel(model);
 		spProdutos = new JScrollPane(tbProdutos);
 		add(spProdutos, BorderLayout.CENTER);
+		
+		
+		
 	}
 }
