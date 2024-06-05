@@ -45,19 +45,28 @@ public class StudentManagement extends JPanel {
 	private JTextField textFieldStudentGenderIdentity;
 	private JTextField textFieldStudentObs;
 	private JTextField textFieldStudentId;
+	private JTextField textFieldStudentNameUpdate;
+	private JTextField textFieldStudentLandlineUpdate;
+	private JTextField textFieldStudentCellphoneNumberUpdate;
+	private JTextField textFieldProgramOrCourseUpdate;
+	private JTextField textFieldStudentAddressUpdate;
+	private JTextField textFieldStudentGenderIdentityUpdate;
+	private JTextField textFieldStudentObsUpdate;
+	private JTextField textFieldStudentIdDelete;
 	/**
 	 * @wbp.nonvisual location=377,-31
 	 */
 //	private final JButton button = new JButton("New button");
 
 	/**
-	 * Create the panel.
+	 * Create the panel. This is the constructor method for the class
 	 */
 	public StudentManagement() {
 		setLayout(null);
 
+		// This is the tabbed pane that will contain the different views
 		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 41, 580, 448);
+		tabbedPane.setBounds(10, 40, 800, 400);
 		add(tabbedPane);
 
 		JTabbedPane viewTableTP = new JTabbedPane(JTabbedPane.TOP);
@@ -67,6 +76,7 @@ public class StudentManagement extends JPanel {
 		addStudentTP.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		addStudentTP.setToolTipText("Add a student.");
 		tabbedPane.addTab("Add Student", null, addStudentTP, null);
+		// This is the panel that will contain the form to add a student
 
 		JPanel addStudentPanel = new JPanel();
 		addStudentTP.addTab("Add Student to Database", null, addStudentPanel, null);
@@ -193,25 +203,178 @@ public class StudentManagement extends JPanel {
 		textFieldStudentObs.setBounds(194, 296, 170, 20);
 		addStudentPanel.add(textFieldStudentObs);
 
-		JButton updateButton = new JButton("Update");
-		updateButton.setBounds(228, 343, 89, 23);
-		addStudentPanel.add(updateButton);
+		// This is the panel that will contain the form to update a student
+		JPanel updateStudentPanel = new JPanel();
+		addStudentTP.addTab("Update Student", null, updateStudentPanel, null);
+		updateStudentPanel.setLayout(null);
 
-		JPanel panel = new JPanel();
-		addStudentTP.addTab("Update Student", null, panel, null);
-		panel.setLayout(null);
+		// The search box should be implemented here.
 
 		JLabel lblStudentId = new JLabel("Enter the student's ID:");
+		lblStudentId.setFont(new Font("Segoe UI", Font.PLAIN, 14));
 		lblStudentId.setBounds(10, 11, 149, 14);
-		panel.add(lblStudentId);
+		updateStudentPanel.add(lblStudentId);
 
 		textFieldStudentId = new JTextField();
 		textFieldStudentId.setText("Student ID");
 		textFieldStudentId.setToolTipText("Enter a student ID.");
 
 		textFieldStudentId.setBounds(190, 8, 175, 20);
-		panel.add(textFieldStudentId);
+		updateStudentPanel.add(textFieldStudentId);
 		textFieldStudentId.setColumns(10);
+
+		JLabel lblStudentNameUpdate = new JLabel("Student Name:");
+		lblStudentNameUpdate.setBounds(10, 42, 85, 14);
+		updateStudentPanel.add(lblStudentNameUpdate);
+
+		textFieldStudentNameUpdate = new JTextField();
+		textFieldStudentNameUpdate.setToolTipText("Enter the student's name.");
+		textFieldStudentNameUpdate.setText("John Doe");
+		textFieldStudentNameUpdate.setColumns(10);
+		textFieldStudentNameUpdate.setBounds(190, 39, 175, 20);
+		updateStudentPanel.add(textFieldStudentNameUpdate);
+
+		JLabel lblStudentLandlineUpdate = new JLabel("Student landline telephone number:");
+		lblStudentLandlineUpdate.setBounds(10, 70, 178, 14);
+		updateStudentPanel.add(lblStudentLandlineUpdate);
+
+		textFieldStudentLandlineUpdate = new JTextField();
+		textFieldStudentLandlineUpdate.setColumns(10);
+		textFieldStudentLandlineUpdate.setBounds(194, 67, 170, 20);
+		updateStudentPanel.add(textFieldStudentLandlineUpdate);
+
+		JLabel lblStudentCellphoneUpdate = new JLabel("Student cellphone number:");
+		lblStudentCellphoneUpdate.setBounds(10, 98, 142, 14);
+		updateStudentPanel.add(lblStudentCellphoneUpdate);
+
+		textFieldStudentCellphoneNumberUpdate = new JTextField();
+		textFieldStudentCellphoneNumberUpdate.setColumns(10);
+		textFieldStudentCellphoneNumberUpdate.setBounds(194, 95, 170, 20);
+		updateStudentPanel.add(textFieldStudentCellphoneNumberUpdate);
+
+		JLabel lblStudentDOBUpdate = new JLabel("Student date of birth:");
+		lblStudentDOBUpdate.setBounds(10, 130, 142, 14);
+		updateStudentPanel.add(lblStudentDOBUpdate);
+
+		JDateChooser dateChooserStudentDOBUpdate = new JDateChooser();
+		dateChooserStudentDOBUpdate.setDateFormatString("yyyy-MM-dd");
+		dateChooserStudentDOBUpdate.setBounds(194, 127, 170, 20);
+		updateStudentPanel.add(dateChooserStudentDOBUpdate);
+
+		JLabel lblProgramOrCourseUpdate = new JLabel("Program or course:");
+		lblProgramOrCourseUpdate.setBounds(10, 161, 142, 14);
+		updateStudentPanel.add(lblProgramOrCourseUpdate);
+
+		textFieldProgramOrCourseUpdate = new JTextField();
+		textFieldProgramOrCourseUpdate.setColumns(10);
+		textFieldProgramOrCourseUpdate.setBounds(194, 158, 170, 20);
+		updateStudentPanel.add(textFieldProgramOrCourseUpdate);
+
+		JLabel lblStudentDOEUpdate = new JLabel("Student date of enrolment:");
+		lblStudentDOEUpdate.setBounds(10, 196, 142, 14);
+		updateStudentPanel.add(lblStudentDOEUpdate);
+
+		JDateChooser dateChooserStudentDOEUpdate = new JDateChooser();
+		dateChooserStudentDOEUpdate.setToolTipText("Enter a date of enrolment.");
+		dateChooserStudentDOEUpdate.setDateFormatString("yyyy-MM-dd");
+		dateChooserStudentDOEUpdate.setBounds(193, 190, 171, 20);
+		updateStudentPanel.add(dateChooserStudentDOEUpdate);
+
+		JLabel lblStudentAddressUpdate = new JLabel("Student address:");
+		lblStudentAddressUpdate.setBounds(10, 230, 85, 14);
+		updateStudentPanel.add(lblStudentAddressUpdate);
+
+		textFieldStudentAddressUpdate = new JTextField();
+		textFieldStudentAddressUpdate.setColumns(10);
+		textFieldStudentAddressUpdate.setBounds(194, 227, 170, 20);
+		updateStudentPanel.add(textFieldStudentAddressUpdate);
+
+		JLabel lblStudentGenderUpdate = new JLabel("Student gender:");
+		lblStudentGenderUpdate.setBounds(10, 266, 85, 14);
+		updateStudentPanel.add(lblStudentGenderUpdate);
+
+		JLabel lblGenderInfoUpdate = new JLabel("*\"N\" means \"non-binary\".");
+		lblGenderInfoUpdate.setBounds(243, 266, 128, 14);
+		updateStudentPanel.add(lblGenderInfoUpdate);
+
+		JLabel lblStudentGenderIdentityUpdate = new JLabel("Student gender identity:");
+		lblStudentGenderIdentityUpdate.setBounds(10, 301, 142, 14);
+		updateStudentPanel.add(lblStudentGenderIdentityUpdate);
+
+		textFieldStudentGenderIdentityUpdate = new JTextField();
+		textFieldStudentGenderIdentityUpdate.setColumns(10);
+		textFieldStudentGenderIdentityUpdate.setBounds(194, 298, 170, 20);
+		updateStudentPanel.add(textFieldStudentGenderIdentityUpdate);
+
+		textFieldStudentObsUpdate = new JTextField();
+		textFieldStudentObsUpdate.setToolTipText("Additional health related information.");
+		textFieldStudentObsUpdate.setColumns(10);
+		textFieldStudentObsUpdate.setBounds(194, 329, 170, 20);
+		updateStudentPanel.add(textFieldStudentObsUpdate);
+
+		JLabel lblStudentObsUpdate = new JLabel("Observations:");
+		lblStudentObsUpdate.setBounds(10, 332, 142, 14);
+		updateStudentPanel.add(lblStudentObsUpdate);
+
+		// Combo box for updating student
+
+		JComboBox<String> comboBoxStudentGenderUpdate = new JComboBox<>(genderChar);
+		comboBoxStudentGenderUpdate.setToolTipText("Select a gender.");
+		comboBoxStudentGenderUpdate.setModel(new DefaultComboBoxModel<String>(new String[] { "M", "F", "N" }));
+		comboBoxStudentGenderUpdate.setSelectedIndex(0);
+		comboBoxStudentGenderUpdate.setBounds(190, 262, 44, 22);
+		updateStudentPanel.add(comboBoxStudentGenderUpdate);
+
+		// This is the button that will update the student
+		JButton updateButton = new JButton("Update");
+		updateButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (bd.getConnection()) {
+					String sql = "UPDATE student_tb SET student_name = ?, student_landline = ?, student_cellphone = ?, student_dob = ?, program_or_course = ?, date_of_enrolment = ?, student_address = ?, student_gender = ?, student_gender_identity = ?, student_obs = ?"
+							+ " WHERE student_id = ?";
+					// Getting the text data from the fields
+					String studentName = textFieldStudentNameUpdate.getText();
+					String studentLandline = textFieldStudentLandlineUpdate.getText();
+					String studentCellphone = textFieldStudentCellphoneNumberUpdate.getText();
+					java.sql.Date studentDOB = new java.sql.Date(dateChooserStudentDOBUpdate.getDate().getTime());
+					String programOrCourse = textFieldProgramOrCourseUpdate.getText();
+					java.sql.Date dateOfEnrolment = new java.sql.Date(dateChooserStudentDOEUpdate.getDate().getTime());
+					String studentAddress = textFieldStudentAddressUpdate.getText();
+					// Getting the selected item from the combo box
+					String studentGender = comboBoxStudentGenderUpdate.getSelectedItem().toString();
+					String studentGenderIdentity = textFieldStudentGenderIdentityUpdate.getText();
+					String studentObs = textFieldStudentObsUpdate.getText();
+
+					try {
+						bd.st = bd.con.prepareStatement(sql);
+						// Omit setting the first parameter (student ID)
+						bd.st.setString(1, studentName);
+						bd.st.setString(2, studentLandline);
+						bd.st.setString(3, studentCellphone);
+						bd.st.setDate(4, studentDOB);
+						bd.st.setString(5, programOrCourse);
+						bd.st.setDate(6, dateOfEnrolment);
+						bd.st.setString(7, studentAddress);
+						bd.st.setString(8, studentGender);
+						bd.st.setString(9, studentGenderIdentity);
+						bd.st.setString(10, studentObs);
+						bd.st.setInt(11, Integer.parseInt(textFieldStudentId.getText()));
+						bd.st.executeUpdate();
+						JOptionPane.showMessageDialog(updateButton, "Student updated successfully!");
+						loadTable();
+					} catch (Exception error1) {
+						JOptionPane.showMessageDialog(updateButton, "Error updating student!");
+						System.out.println(error1);
+					} finally {
+						bd.close();
+					}
+				}
+
+			}
+		});
+		updateButton.setBounds(10, 365, 89, 23);
+		updateStudentPanel.add(updateButton);
 		JLabel lblNewLabel = new JLabel("Student Management");
 		lblNewLabel.setBounds(219, 5, 185, 25);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
@@ -275,22 +438,103 @@ public class StudentManagement extends JPanel {
 			System.exit(0);
 		}
 
+		// Create a studentSP scrollpanel
+		studentSP = new JScrollPane(studentTable);
+
 		// Adding the table to the already existing tabbed pane
 		viewTableTP.add(studentSP, BorderLayout.CENTER);
 		// TODO: Rename the tab label "Center", to something more meaningful
-		viewTableTP.setTitleAt(1, "Students");
+		// For some odd reason, the index keeps changing
+		// I'm going to try to set the index to 0
+		viewTableTP.setTitleAt(0, "Students");
 
 		JPanel viewStudentsPanel = new JPanel();
 		viewTableTP.addTab("View Students", null, viewStudentsPanel, null);
+		viewStudentsPanel.setLayout(null);
+
+		JScrollPane showStudentsScrollPane = new JScrollPane();
+		showStudentsScrollPane.setBounds(20, 45, 475, 288);
+		viewStudentsPanel.add(showStudentsScrollPane);
+
+		// This button is used to show the student_tb table
+		JButton btnNewButton = new JButton("Show Students");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				if (bd.getConnection()) {
+					String sql = "SELECT * FROM student_tb";
+					model = MyTableModel.getModel(bd, sql);
+					// Using the already existing JScrollPane to display data
+					studentTable.setModel(model);
+					showStudentsScrollPane.setViewportView(studentTable);
+
+				}
+
+			}
+		});
+		btnNewButton.setBounds(10, 11, 136, 23);
+		viewStudentsPanel.add(btnNewButton);
 
 		JTabbedPane deleteStudentTP = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("Delete Student", null, deleteStudentTP, null);
+
+		JPanel deleteStudentPanel = new JPanel();
+		deleteStudentTP.addTab("Delete", null, deleteStudentPanel, null);
+		deleteStudentPanel.setLayout(null);
+
+		JLabel lblStudentIdDelete = new JLabel("Enter the student's ID:");
+		lblStudentIdDelete.setFont(new Font("Segoe UI", Font.PLAIN, 14));
+		lblStudentIdDelete.setBounds(10, 11, 149, 14);
+		deleteStudentPanel.add(lblStudentIdDelete);
+
+		textFieldStudentIdDelete = new JTextField();
+		textFieldStudentIdDelete.setToolTipText("Enter a student ID.");
+		textFieldStudentIdDelete.setText("Student ID");
+		textFieldStudentIdDelete.setColumns(10);
+		textFieldStudentIdDelete.setBounds(169, 10, 175, 20);
+		deleteStudentPanel.add(textFieldStudentIdDelete);
+
+		// Button to delete student
+		// When you delete the last row of a table, Java throws an exception
+		// This is a known bug in Java
+		// The exception is thrown because the table is empty
+		// The solution is to add a row to the table
+		// This is a workaround to prevent the exception from being thrown
+		/*
+		 * The ideal scenario would be to create a condition in which when a table is
+		 * empty a row is added to the table
+		 * 
+		 */
+		JButton deleteButton = new JButton("Delete");
+		deleteButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+
+				if (bd.getConnection()) {
+					String sql = "DELETE FROM student_tb WHERE student_id = ?";
+					try {
+						bd.st = bd.con.prepareStatement(sql);
+						bd.st.setInt(1, Integer.parseInt(textFieldStudentIdDelete.getText()));
+						bd.st.executeUpdate();
+						JOptionPane.showMessageDialog(deleteButton, "Student deleted successfully!");
+						loadTable();
+					} catch (Exception error1) {
+						JOptionPane.showMessageDialog(deleteButton, "Error deleting student!");
+						System.out.println(error1);
+					} finally {
+						bd.close();
+					}
+				}
+
+			}
+		});
+		deleteButton.setBounds(10, 76, 89, 23);
+		deleteStudentPanel.add(deleteButton);
 
 	}
 
 	// Loads the student table
 	private void loadTable() {
-		String sql = "SELECT * FROM student_tb";
+		String sql = "SELECT student_id, student_name, student_landline, student_cellphone, student_dob, program_or_course, date_of_enrolment, student_address, student_gender, student_gender_identity, student_obs FROM student_tb";
 		model = MyTableModel.getModel(bd, sql);
 		studentTable.setModel(model);
 		studentSP = new JScrollPane(studentTable);

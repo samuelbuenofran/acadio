@@ -19,8 +19,15 @@ CREATE TABLE student_tb (
 
 USE acadio;
 -- Insert test data
-INSERT INTO student_tb VALUES (1, 'John Doe', '12345678', '87654321', '1990-01-01', 'Computer Science', '2019-01-01', '123 Main St', 'M', null, null);
+INSERT INTO student_tb VALUES ('John Doe', '12345678', '87654321', '1990-01-01', 'Computer Science', '2019-01-01', '123 Main St', 'M', null, null);
 
+USE acadio;
 SELECT * FROM student_tb;
 
+USE acadio;
+DROP TABLE student_tb;
 DROP DATABASE acadio;
+
+-- DANGER ZONE
+ALTER DATABASE acadio SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+alter database acadio set MULTI_USER

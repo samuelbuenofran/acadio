@@ -15,8 +15,8 @@ public class BD {
 	private final String DRIVER = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private final String DATABASENAME = "acadio";
 	private final String URL = "jdbc:sqlserver://localhost;databasename=" + DATABASENAME;
-	private final String LOGIN = "usuario";
-	private final String PASSWORD = "fatec";
+	private final String LOGIN = "sa";
+	private final String PASSWORD = "p@$$w0rd!";
 	// private final String INTEGRATED_SECURITY = "true";
 
 	/**

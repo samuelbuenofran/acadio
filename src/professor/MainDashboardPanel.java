@@ -62,6 +62,8 @@ public class MainDashboardPanel extends JPanel {
 
 			} catch (SQLException e) {
 				System.out.println(e);
+			} finally {
+				bd.close();
 			}
 		}
 	}

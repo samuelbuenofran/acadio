@@ -3,7 +3,6 @@ package services;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Types;
-import java.text.DecimalFormat;
 import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
@@ -17,51 +16,36 @@ public class MyTableModel {
 			Vector<Vector<String>> rows = new Vector<>();
 			bd.st = bd.con.prepareStatement(sql);
 			bd.rs = bd.st.executeQuery();
-			bd.rs.next();
-			// Search for the headers
-			ResultSetMetaData rsmd = bd.rs.getMetaData();
-			for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-				header.addElement(rsmd.getColumnName(i));
-			}
 
-			// Search for the rows' data
-			do {
-				Vector<String> currentRow = new Vector<>();
-				// The line below was written for a Brazilian application;
-				// DecimalFormat df = new DecimalFormat("R$ 00.00");
-				// The line below is adapted to the UK currency;
-				DecimalFormat df = new DecimalFormat("£ 00.00");
-				for (int i = 1; i <= rsmd.getColumnCount(); i++) {
-					switch (rsmd.getColumnType(i)) {
-					case Types.VARCHAR:
-						currentRow.addElement(bd.rs.getString(i));
-						break;
-					case Types.CHAR:
-						currentRow.addElement(bd.rs.getString(i));
-						break;
-					case Types.TIMESTAMP:
-						currentRow.addElement("" + bd.rs.getDate(i));
-						break;
-					case Types.DOUBLE:
-						currentRow.addElement("" + bd.rs.getDouble(i));
-						break;
-					case Types.DECIMAL:
-						currentRow.addElement("" + bd.rs.getDouble(i));
-						break;
-					case Types.INTEGER:
-						currentRow.addElement("" + bd.rs.getInt(i));
-						break;
-					case Types.NUMERIC:
-						currentRow.addElement("" + df.format(bd.rs.getDouble(i)));
-						break;
-					case Types.SMALLINT:
-						currentRow.addElement("" + bd.rs.getInt(i));
-						break;
-					// default:System.out.println(rsmd.getColumnType(i));
-					}
+			// Check if there are any rows in the result set
+			if (bd.rs.next()) {
+				// Get the column names directly from the ResultSetMetaData
+				ResultSetMetaData rsmd = bd.rs.getMetaData();
+				int columnCount = rsmd.getColumnCount();
+				for (int i = 1; i <= columnCount; i++) {
+					header.addElement(rsmd.getColumnName(i));
 				}
-				rows.addElement(currentRow);
-			} while (bd.rs.next());
+
+				// Search for the rows' data
+				do {
+					Vector<String> currentRow = new Vector<>();
+					for (int i = 1; i <= columnCount; i++) {
+						switch (rsmd.getColumnType(i)) {
+						// Handle specific data types if needed
+						case Types.DATE:
+							currentRow.addElement("" + bd.rs.getDate(i));
+							break;
+						// Add more cases for other data types as needed
+						default:
+							currentRow.addElement(bd.rs.getString(i));
+						}
+					}
+					rows.addElement(currentRow);
+				} while (bd.rs.next());
+			} else {
+				// Handle no rows scenario (e.g., display a message)
+				System.out.println("No data found in the table.");
+			}
 
 			tableModel = new DefaultTableModel(rows, header);
 		} catch (SQLException error) {
