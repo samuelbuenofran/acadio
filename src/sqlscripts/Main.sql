@@ -4,7 +4,7 @@ SELECT * FROM sys.databases;
 
 USE acadio;
 CREATE TABLE student_tb (
-  student_id INT PRIMARY KEY,
+  student_id INT PRIMARY KEY IDENTITY(1,1),
   student_name NVARCHAR(100) NOT NULL,
   student_landline VARCHAR(20),
   student_cellphone VARCHAR(20),
@@ -22,3 +22,5 @@ USE acadio;
 INSERT INTO student_tb VALUES (1, 'John Doe', '12345678', '87654321', '1990-01-01', 'Computer Science', '2019-01-01', '123 Main St', 'M', null, null);
 
 SELECT * FROM student_tb;
+
+DROP DATABASE acadio;

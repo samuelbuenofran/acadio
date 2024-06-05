@@ -24,16 +24,13 @@ public class MainDashboardPanel extends JPanel {
 	public static void main(String[] args) {
 		BD bd = new BD();
 		if (bd.getConnection()) {
-			String sql = "SELECT * FROM student_tb WHERE student_id = ?";
-			// String sql = "SELECT student_id, student_name, student_landline,
-			// student_cellphone, date_of_enrolment, program_or_course, student_address,
-			// student_gender, student_gender_identity, student_obs FROM student_tb WHERE
-			// student_id =";
+			// String sql = "SELECT * FROM student_tb WHERE student_id = ?";
+			String sql = "SELECT student_id, student_name, student_landline, student_cellphone, student_dob, program_or_course, date_of_enrolment, student_address, student_gender, student_gender_identity, student_obs FROM student_tb WHERE student_id = ?";
 			try {
 				bd.st = bd.con.prepareStatement(sql);
 				// Define the value of the first parameter
 				// (Param1, Value1)
-				bd.st.setInt(1, 3);
+				bd.st.setInt(1, 1);
 				// Define the value of the second parameter
 				// bd.st.setInt(2, 1);
 				bd.rs = bd.st.executeQuery();

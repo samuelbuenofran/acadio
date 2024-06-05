@@ -16,7 +16,7 @@ public class StudentDAO {
 
 	public String write(Student student) {
 		// Prepares a SQL insert statement
-		sql = "INSERT INTO student_tb VALUES (?,?,?,?,?,?,?,?,?,?)";
+		sql = "INSERT INTO student_tb VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 		// Default message
 		msg = "Student registered successfully!";
 		// Establishes a connection

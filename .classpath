@@ -7,12 +7,12 @@
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry exported="true" kind="lib" path="sqljdbc4.jar"/>
-	<classpathentry kind="lib" path="DateChooserDemo.jar"/>
-	<classpathentry kind="lib" path="DateChooser.jar"/>
-	<classpathentry kind="lib" path="jcalendar-1.4.jar"/>
-	<classpathentry kind="lib" path="jgoodies-common-1.2.0.jar"/>
-	<classpathentry kind="lib" path="jgoodies-looks-2.4.1.jar"/>
-	<classpathentry kind="lib" path="swingx-core-1.6.5-1.jar"/>
-	<classpathentry kind="lib" path="junit-4.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="DateChooserDemo.jar"/>
+	<classpathentry exported="true" kind="lib" path="DateChooser.jar"/>
+	<classpathentry exported="true" kind="lib" path="jcalendar-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="jgoodies-common-1.2.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="jgoodies-looks-2.4.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="swingx-core-1.6.5-1.jar"/>
+	<classpathentry exported="true" kind="lib" path="junit-4.6.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

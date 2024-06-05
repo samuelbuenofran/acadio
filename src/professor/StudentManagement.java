@@ -4,8 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
@@ -34,16 +34,17 @@ public class StudentManagement extends JPanel {
 	// I'm going to assume it's a JScrollPane
 	// This is the scroll pane that will contain the query table
 	private JScrollPane studentSP;
-	private BD bd;
+	// This is the database connection
+	// Instantiating this class will connect to the database due to its constructor
+	private BD bd = new BD(); // Create BD instance outside of the constructor
 	private JTextField textFieldStudentName;
 	private JTextField textFieldStudentLandline;
 	private JTextField textFieldStudentCellphoneNumber;
 	private JTextField textFieldProgramOrCourse;
 	private JTextField textFieldStudentAddress;
-	// private JTextField filterTF;
 	private JTextField textFieldStudentGenderIdentity;
 	private JTextField textFieldStudentObs;
-	private JTextField textFieldStudentSearch;
+	private JTextField textFieldStudentId;
 	/**
 	 * @wbp.nonvisual location=377,-31
 	 */
@@ -126,6 +127,7 @@ public class StudentManagement extends JPanel {
 		JDateChooser dateChooserStudentDOE = new JDateChooser();
 		dateChooserStudentDOE.setDateFormatString("yyyy-MM-dd");
 		dateChooserStudentDOE.getCalendarButton().addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
@@ -134,12 +136,8 @@ public class StudentManagement extends JPanel {
 		addStudentPanel.add(dateChooserStudentDOE);
 
 		JButton clearButton = new JButton("Clear");
-		clearButton.setBounds(120, 343, 89, 23);
+		clearButton.setBounds(129, 343, 89, 23);
 		addStudentPanel.add(clearButton);
-
-		JButton insertButton = new JButton("Insert");
-		insertButton.setBounds(21, 343, 89, 23);
-		addStudentPanel.add(insertButton);
 
 		JLabel lblStudentAddress = new JLabel("Student address:");
 		lblStudentAddress.setBounds(10, 197, 85, 14);
@@ -154,10 +152,22 @@ public class StudentManagement extends JPanel {
 		lblStudentGender.setBounds(10, 233, 85, 14);
 		addStudentPanel.add(lblStudentGender);
 
-		JComboBox comboBoxStudentGender = new JComboBox();
-		comboBoxStudentGender.setModel(new DefaultComboBoxModel(new String[] { "M", "F", "N" }));
+		String[] genderChar = { "M", "F", "N" };
+
+		// Combo box for student
+		JComboBox<String> comboBoxStudentGender = new JComboBox<>(genderChar);
+		comboBoxStudentGender.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+			}
+		});
+		comboBoxStudentGender.setFont(new Font("Segoe UI", Font.PLAIN, 12));
+		comboBoxStudentGender.setToolTipText("Select the student's gender");
+
+		comboBoxStudentGender.setModel(new DefaultComboBoxModel<String>(new String[] { "M", "F", "N" }));
 		comboBoxStudentGender.setMaximumRowCount(3);
-		comboBoxStudentGender.setBounds(194, 229, 39, 22);
+		comboBoxStudentGender.setBounds(194, 229, 40, 22);
+
 		addStudentPanel.add(comboBoxStudentGender);
 
 		JLabel lblGenderInfo = new JLabel("*\"N\" means \"non-binary\".");
@@ -191,53 +201,70 @@ public class StudentManagement extends JPanel {
 		addStudentTP.addTab("Update Student", null, panel, null);
 		panel.setLayout(null);
 
-		// Code to search for a student
-		// The filtered search will appear here
-		JPanel viewAndUpdateStudentPane = new JPanel();
-		viewAndUpdateStudentPane.setBounds(10, 29, 495, 324);
-		panel.add(viewAndUpdateStudentPane);
-		viewAndUpdateStudentPane.setLayout(null);
-		viewAndUpdateStudentPane.setToolTipText("View and update student information.");
-		viewAndUpdateStudentPane.setBorder(null);
+		JLabel lblStudentId = new JLabel("Enter the student's ID:");
+		lblStudentId.setBounds(10, 11, 149, 14);
+		panel.add(lblStudentId);
 
-		JLabel lblStudentSearch = new JLabel("Search for a student:");
-		lblStudentSearch.setBounds(10, 11, 149, 14);
-		panel.add(lblStudentSearch);
+		textFieldStudentId = new JTextField();
+		textFieldStudentId.setText("Student ID");
+		textFieldStudentId.setToolTipText("Enter a student ID.");
 
-		textFieldStudentSearch = new JTextField();
-		textFieldStudentSearch.addKeyListener(new KeyAdapter() {
-
-			@Override
-			public void keyPressed(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				String sql = "SELECT * FROM student_tb WHERE student_name " + "LIKE '%"
-						+ textFieldStudentSearch.getText() + "%'";
-				model = MyTableModel.getModel(bd, sql);
-				studentTable.setModel(model);
-
-			}
-
-			@Override
-			public void keyTyped(KeyEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-		});
-		textFieldStudentSearch.setBounds(190, 8, 175, 20);
-		panel.add(textFieldStudentSearch);
-		textFieldStudentSearch.setColumns(10);
+		textFieldStudentId.setBounds(190, 8, 175, 20);
+		panel.add(textFieldStudentId);
+		textFieldStudentId.setColumns(10);
 		JLabel lblNewLabel = new JLabel("Student Management");
 		lblNewLabel.setBounds(219, 5, 185, 25);
 		lblNewLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
 
 		add(lblNewLabel);
 		setBounds(100, 100, 600, 500);
+
+		JButton insertButton = new JButton("Insert");
+		insertButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				if (bd.getConnection()) {
+					String sql = "INSERT INTO student_tb (student_name, student_landline, student_cellphone, student_dob, program_or_course, date_of_enrolment, student_address, student_gender, student_gender_identity, student_obs) VALUES (?,?,?,?,?,?,?,?,?,?)";
+					// Getting the text data from the fields
+					String studentName = textFieldStudentName.getText();
+					String studentLandline = textFieldStudentLandline.getText();
+					String studentCellphone = textFieldStudentCellphoneNumber.getText();
+					java.sql.Date studentDOB = new java.sql.Date(dateChooserStudentDOB.getDate().getTime());
+					String programOrCourse = textFieldProgramOrCourse.getText();
+					java.sql.Date dateOfEnrolment = new java.sql.Date(dateChooserStudentDOE.getDate().getTime());
+					String studentAddress = textFieldStudentAddress.getText();
+					// Getting the selected item from the combo box
+					String studentGender = comboBoxStudentGender.getSelectedItem().toString();
+					String studentGenderIdentity = textFieldStudentGenderIdentity.getText();
+					String studentObs = textFieldStudentObs.getText();
+
+					try {
+						bd.st = bd.con.prepareStatement(sql);
+						// Omit setting the first parameter (student ID)
+						bd.st.setString(1, studentName);
+						bd.st.setString(2, studentLandline);
+						bd.st.setString(3, studentCellphone);
+						bd.st.setDate(4, studentDOB);
+						bd.st.setString(5, programOrCourse);
+						bd.st.setDate(6, dateOfEnrolment);
+						bd.st.setString(7, studentAddress);
+						bd.st.setString(8, studentGender);
+						bd.st.setString(9, studentGenderIdentity);
+						bd.st.setString(10, studentObs);
+						bd.st.executeUpdate();
+						JOptionPane.showMessageDialog(insertButton, "Student inserted successfully!");
+						loadTable();
+					} catch (Exception error1) {
+						JOptionPane.showMessageDialog(insertButton, "Error inserting student!");
+						System.out.println(error1);
+					} finally {
+						bd.close();
+					}
+				}
+			}
+		});
+		insertButton.setBounds(21, 343, 89, 23);
+		addStudentPanel.add(insertButton);
 
 		studentTable = new JTable();
 		bd = new BD();

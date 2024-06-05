@@ -1,11 +1,11 @@
-package professor;
+package prototype;
 
 import java.awt.BorderLayout;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 import services.BD;
 import services.MyTableModel;
 
-public class GridQuery extends JPanel {
+public class GridQuery extends JFrame {
 
 	/**
 	 * 
@@ -26,10 +26,8 @@ public class GridQuery extends JPanel {
 	private JTextField filterTF;
 	private BD bd;
 
-	/**
-	 * Create the panel.
-	 */
 	public GridQuery() {
+		setTitle("Search for students:");
 		setBounds(100, 100, 600, 500);
 		setLayout(new BorderLayout());
 		filterTF = new JTextField();
@@ -64,7 +62,6 @@ public class GridQuery extends JPanel {
 
 			}
 		});
-
 	}
 
 	private void loadTable() {
@@ -76,4 +73,9 @@ public class GridQuery extends JPanel {
 
 	}
 
+	public static void main(String[] args) {
+		GridQuery gq = new GridQuery();
+		gq.setVisible(true);
+		gq.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	}
 }
