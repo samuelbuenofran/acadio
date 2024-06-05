@@ -278,7 +278,10 @@ public class StudentManagement extends JPanel {
 		// Adding the table to the already existing tabbed pane
 		viewTableTP.add(studentSP, BorderLayout.CENTER);
 		// TODO: Rename the tab label "Center", to something more meaningful
-		viewTableTP.setTitleAt(0, "Students");
+		viewTableTP.setTitleAt(1, "Students");
+
+		JPanel viewStudentsPanel = new JPanel();
+		viewTableTP.addTab("View Students", null, viewStudentsPanel, null);
 
 		JTabbedPane deleteStudentTP = new JTabbedPane(JTabbedPane.TOP);
 		tabbedPane.addTab("Delete Student", null, deleteStudentTP, null);

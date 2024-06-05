@@ -81,6 +81,7 @@ public class DashboardProfessor extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				cardLayout.show(mainContentPanel, "StudentManagement");
+
 			}
 		});
 		lblStudent.setBounds(33, 363, 94, 94);
