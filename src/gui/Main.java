@@ -11,7 +11,11 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JWindow;
 
-// Class definition
+/**
+ * EN: This is the main class which starts the application with a splash screen
+ * with a .gif loading icon. PT: Esta é a classe principal que inicia a
+ * aplicação com uma tela de apresentação com um ícone de carregamento .gif.
+ */
 public class Main extends JWindow {
 
 	// Create variables to store the images
@@ -19,10 +23,18 @@ public class Main extends JWindow {
 	private ImageIcon loadingIcon;
 
 	/**
-	 *
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * EN: Constructor for the Main class. It sets the size and layout of the
+	 * window, and loads the images.
+	 * 
+	 * PT: Construtor para a classe Main. Define o tamanho e layout da janela, e
+	 * carrega as imagens.
+	 */
 	public Main() {
 
 		// Load the images
@@ -81,6 +93,15 @@ public class Main extends JWindow {
 		// Forcibly hides the splash screen after 3 seconds
 	}
 
+	/**
+	 * EN: Paint method to draw the images on the window. This method is necessary
+	 * so the images can be rendered nicely to the screen. There are other ways of
+	 * doing this but, the quality of the images aren't as good.
+	 * 
+	 * PT: Método paint para desenhar as imagens na janela. Este método é necessário
+	 * para que as imagens possam ser renderizadas corretamente na tela. Existem
+	 * outras maneiras de fazer isso, mas a qualidade das imagens não é tão boa.
+	 */
 	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
@@ -102,6 +123,15 @@ public class Main extends JWindow {
 		}
 	}
 
+	/**
+	 * EN: Method to load an image from a file path.
+	 * 
+	 * PT: Método para carregar uma imagem de um caminho de arquivo.
+	 * 
+	 * @param path The path to the image file. O caminho para o arquivo de imagem.
+	 * @return The image loaded from the file path. A imagem carregada do caminho do
+	 *         arquivo.
+	 */
 	private BufferedImage loadImage(String path) {
 		try {
 			return javax.imageio.ImageIO.read(new java.io.File(path));
@@ -111,6 +141,13 @@ public class Main extends JWindow {
 		}
 	}
 
+	/**
+	 * EN: Main method to start the application.
+	 * 
+	 * PT: Método principal para iniciar a aplicação.
+	 * 
+	 * @param args The command line arguments. Os argumentos da linha de comando.
+	 */
 	public static void main(String[] args) {
 		// Create and show the splash screen
 		Main m = new Main();

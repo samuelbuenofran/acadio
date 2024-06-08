@@ -7,6 +7,14 @@ import java.util.Vector;
 
 import javax.swing.table.DefaultTableModel;
 
+/**
+ * EN: This class is responsible for creating a table model based on the result
+ * set of a SQL query.
+ * 
+ * PT: Esta classe é responsável por criar um modelo de tabela com base no
+ * conjunto de resultados de uma consulta SQL.
+ * 
+ */
 public class MyTableModel {
 	private static DefaultTableModel tableModel;
 

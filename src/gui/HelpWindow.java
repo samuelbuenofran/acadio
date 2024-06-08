@@ -8,6 +8,10 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * EN: This class creates a window with help information for the user. PT: Esta
+ * classe cria uma janela com informações de ajuda para o usuário.
+ */
 public class HelpWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;

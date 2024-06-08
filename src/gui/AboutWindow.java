@@ -8,13 +8,17 @@ import javax.swing.JPanel;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * EN: This is the about window that displays information about the application.
+ * PT: Esta é a janela sobre que exibe informações sobre a aplicação.
+ */
 public class AboutWindow extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * EN: Launch the application. PT: Inicia a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {

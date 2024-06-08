@@ -14,6 +14,10 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * EN: This class is used to select the type of user that will be logging in.
+ * PT: Esta classe é usada para selecionar o tipo de usuário que fará login.
+ */
 public class SelectUserType extends JFrame {
 
 	private static final long serialVersionUID = 1L;

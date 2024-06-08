@@ -17,6 +17,10 @@ import javax.swing.border.EmptyBorder;
 
 import professor.DashboardProfessor;
 
+/**
+ * EN: This class represents the login screen for the Professor user type. PT:
+ * Esta classe representa a tela de login para o tipo de usuário Professor.
+ */
 public class LoginProfessor extends JFrame {
 
 	private static final long serialVersionUID = 1L;
