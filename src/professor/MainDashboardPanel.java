@@ -2,6 +2,7 @@ package professor;
 
 import java.sql.SQLException;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -15,9 +16,34 @@ public class MainDashboardPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public MainDashboardPanel() {
+		setLayout(null);
 
-		JLabel lblTest = new JLabel("This is a test for home.");
-		add(lblTest);
+		JLabel lblMessagingElement = new JLabel("");
+		lblMessagingElement
+				.setIcon(new ImageIcon(DashboardProfessor.class.getResource("/images/Messages_UI_Element.png")));
+		lblMessagingElement.setBounds(64, 5, 304, 278);
+		add(lblMessagingElement);
+
+		JLabel lblScheduleElement = new JLabel("");
+		lblScheduleElement.setIcon(
+				new ImageIcon(DashboardProfessor.class.getResource("/images/Scheduled_Classes_UI_Element.png")));
+		lblScheduleElement.setBounds(454, 5, 304, 278);
+		add(lblScheduleElement);
+
+		JLabel lblCalendarElement = new JLabel("");
+		lblCalendarElement
+				.setIcon(new ImageIcon(DashboardProfessor.class.getResource("/images/Calendar_UI_Element.png")));
+		lblCalendarElement.setBounds(64, 316, 304, 364);
+		add(lblCalendarElement);
+
+		JLabel lblBacklogElement = new JLabel("");
+		lblBacklogElement.setIcon(
+				new ImageIcon(DashboardProfessor.class.getResource("/images/Backlog_Scheduled_UI_Element.png")));
+		lblBacklogElement.setBounds(454, 316, 304, 338);
+		add(lblBacklogElement);
+
+//		JLabel lblTest = new JLabel("This is a test for home.");
+//		add(lblTest);
 
 	}
 

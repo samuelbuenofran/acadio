@@ -7,6 +7,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.sql.SQLException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
@@ -16,6 +17,8 @@ import javax.swing.SwingConstants;
 import javax.swing.WindowConstants;
 
 import org.eclipse.wb.swing.FocusTraversalOnArray;
+
+import services.BD;
 
 public class DashboardProfessor extends JFrame {
 
@@ -41,7 +44,7 @@ public class DashboardProfessor extends JFrame {
 	public DashboardProfessor() {
 		setResizable(true);
 		setTitle("Dashboard Professor");
-		setSize(953, 853);
+		setSize(1000, 853);
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setLocationRelativeTo(null);
 
@@ -51,7 +54,7 @@ public class DashboardProfessor extends JFrame {
 
 		JPanel sideBarPanel = new JPanel();
 		sideBarPanel.setBounds(0, 0, 161, 814);
-		sideBarPanel.setBackground(new Color(128, 128, 128));
+		sideBarPanel.setBackground(new Color(217, 217, 217));
 		contentPane.add(sideBarPanel);
 		sideBarPanel.setLayout(null);
 
@@ -109,19 +112,41 @@ public class DashboardProfessor extends JFrame {
 		sideBarPanel.add(lblSettings);
 		lblSettings.setIcon(new ImageIcon(DashboardProfessor.class.getResource("/images/gear_fluency.png")));
 
-		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { sideBarPanel, lblHamburger, lblHome,
-				lblChat, lblRepository, lblClipboard, lblSettings }));
-
 		// Initialize the main content area with CardLayout
 		cardLayout = new CardLayout();
 		mainContentPanel = new JPanel(cardLayout);
-		mainContentPanel.setBounds(161, 0, 776, 814); // Adjusted size to fit the rest of the frame
+		mainContentPanel.setBounds(161, 78, 823, 736); // Adjusted size to fit the rest of the frame
 		contentPane.add(mainContentPanel);
 
 		// Create and add the panels to the CardLayout panel
 		JPanel homePanel = new JPanel();
 		homePanel.setBackground(Color.WHITE);
 		mainContentPanel.add(homePanel, "Home");
+		homePanel.setLayout(null);
+
+//		JLabel lblMessagingElement = new JLabel("");
+//		lblMessagingElement
+//				.setIcon(new ImageIcon(DashboardProfessor.class.getResource("/images/Messages_UI_Element.png")));
+//		lblMessagingElement.setBounds(39, 39, 304, 278);
+//		homePanel.add(lblMessagingElement);
+//
+//		JLabel lblScheduleElement = new JLabel("");
+//		lblScheduleElement.setIcon(
+//				new ImageIcon(DashboardProfessor.class.getResource("/images/Scheduled_Classes_UI_Element.png")));
+//		lblScheduleElement.setBounds(422, 39, 304, 278);
+//		homePanel.add(lblScheduleElement);
+//
+//		JLabel lblCalendarElement = new JLabel("");
+//		lblCalendarElement
+//				.setIcon(new ImageIcon(DashboardProfessor.class.getResource("/images/Calendar_UI_Element.png")));
+//		lblCalendarElement.setBounds(39, 345, 304, 364);
+//		homePanel.add(lblCalendarElement);
+//
+//		JLabel lblBacklogElement = new JLabel("");
+//		lblBacklogElement.setIcon(
+//				new ImageIcon(DashboardProfessor.class.getResource("/images/Backlog_Scheduled_UI_Element.png")));
+//		lblBacklogElement.setBounds(422, 345, 304, 338);
+//		homePanel.add(lblBacklogElement);
 
 		// Initialize each individual panel
 
@@ -133,6 +158,44 @@ public class DashboardProfessor extends JFrame {
 
 		cardLayout.show(mainContentPanel, "MainDashboardPanel"); // Show home panel by default
 
+		JPanel topPanel = new JPanel();
+		topPanel.setBackground(new Color(193, 193, 193));
+		topPanel.setBounds(161, 0, 823, 79);
+		contentPane.add(topPanel);
+		topPanel.setLayout(null);
+
+		// Logic for fetching the professor's name from the database and displaying it
+		// with the welcome message in lblGreeting:
+		// lblGreeting.setText("Welcome " + professorName + "!");
+		// Replace <user> with the professor's name
+
+		JLabel lblGreeting = new JLabel("Welcome <user>!");
+		lblGreeting.setFont(new Font("Segoe UI", Font.PLAIN, 17));
+		lblGreeting.setBounds(10, 21, 190, 36);
+		topPanel.add(lblGreeting);
+		setFocusTraversalPolicy(new FocusTraversalOnArray(new Component[] { sideBarPanel, lblHamburger, lblHome,
+				lblChat, lblRepository, lblClipboard, lblSettings, topPanel, lblGreeting }));
+
 		// cardLayout.show(mainContentPanel, "Home"); // Show home panel by default
+
+		// Retrieving the professor's name in the acadio database:
+		String professorName = "";
+		BD bd = new BD();
+		if (bd.getConnection()) {
+			try {
+				bd.st = bd.con.prepareStatement("SELECT professor_name FROM professor_tb WHERE professor_id = ?");
+				bd.st.setInt(1, 1); // Replace 1 with the professor's ID
+				bd.rs = bd.st.executeQuery();
+				if (bd.rs.next()) {
+					professorName = bd.rs.getString("professor_name");
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			bd.close();
+		}
+		lblGreeting.setText("Welcome " + professorName + "!");
+
+		// Add the following code to the close() method in the BD class:
 	}
 }
