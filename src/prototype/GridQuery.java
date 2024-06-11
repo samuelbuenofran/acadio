@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.WindowConstants;
 import javax.swing.table.DefaultTableModel;
 
 import services.BD;
@@ -17,7 +18,7 @@ import services.MyTableModel;
 public class GridQuery extends JFrame {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable studentTable;
@@ -76,6 +77,6 @@ public class GridQuery extends JFrame {
 	public static void main(String[] args) {
 		GridQuery gq = new GridQuery();
 		gq.setVisible(true);
-		gq.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gq.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 	}
 }

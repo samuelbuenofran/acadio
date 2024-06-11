@@ -17,7 +17,7 @@ import services.MyTableModel;
 public class GridQuery extends JPanel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable studentTable;

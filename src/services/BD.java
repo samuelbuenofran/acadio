@@ -7,12 +7,14 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 
+ *
  * EN: Class responsible for the connection to the database. PT: Classe
  * responsável pela conexão com o banco de dados.
- * 
+ *
  */
 public class BD {
+
+	private int successfullConnectionsNumber = 0;
 
 	// EN: Connection object PT: Objeto de conexão
 	public Connection con = null;
@@ -33,13 +35,15 @@ public class BD {
 	 *
 	 * @param - none;
 	 * @return - true in case of success, or false otherwise
-	 * 
+	 *
 	 */
 	public boolean getConnection() {
 		try {
 			Class.forName(DRIVER);
 			con = DriverManager.getConnection(URL, LOGIN, PASSWORD);
 			System.out.println("Connected successfully!");
+			successfullConnectionsNumber++;
+			System.out.println("Number of successful connections: " + successfullConnectionsNumber);
 			return true;
 		} catch (SQLException error) {
 			System.out.println("Error connecting to the database: " + error.toString());
@@ -52,10 +56,10 @@ public class BD {
 	}
 
 	/**
-	 * 
+	 *
 	 * EN: Closes the connection and releases the objects used. PT: Fecha a conexão
 	 * e libera os objetos utilizados.
-	 * 
+	 *
 	 */
 	public void close() {
 
@@ -63,10 +67,10 @@ public class BD {
 
 	/**
 	 * EN: Executes a query. PT: Executa uma query.
-	 * 
+	 *
 	 * @param - none;
 	 * @return - none;
-	 * 
+	 *
 	 */
 	public static void main(String[] args) {
 		BD bd = new BD();

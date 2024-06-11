@@ -97,7 +97,7 @@ public class SelectUserType extends JFrame {
 		contentPane.add(lblStudent);
 
 		JLabel lblCopyright = new JLabel("Acadio®, 2024.");
-		lblCopyright.setBounds(23, 286, 77, 14);
+		lblCopyright.setBounds(23, 286, 182, 14);
 		contentPane.add(lblCopyright);
 	}
 }

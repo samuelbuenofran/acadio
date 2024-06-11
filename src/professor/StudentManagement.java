@@ -17,6 +17,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.toedter.calendar.JDateChooser;
@@ -65,14 +66,14 @@ public class StudentManagement extends JPanel {
 		setLayout(null);
 
 		// This is the tabbed pane that will contain the different views
-		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
-		tabbedPane.setBounds(10, 40, 800, 400);
+		JTabbedPane tabbedPane = new JTabbedPane(SwingConstants.TOP);
+		tabbedPane.setBounds(10, 40, 800, 500);
 		add(tabbedPane);
 
-		JTabbedPane viewTableTP = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane viewTableTP = new JTabbedPane(SwingConstants.TOP);
 		tabbedPane.addTab("Student Management", null, viewTableTP, null);
 
-		JTabbedPane addStudentTP = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane addStudentTP = new JTabbedPane(SwingConstants.TOP);
 		addStudentTP.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		addStudentTP.setToolTipText("Add a student.");
 		tabbedPane.addTab("Add Student", null, addStudentTP, null);
@@ -174,7 +175,7 @@ public class StudentManagement extends JPanel {
 		comboBoxStudentGender.setFont(new Font("Segoe UI", Font.PLAIN, 12));
 		comboBoxStudentGender.setToolTipText("Select the student's gender");
 
-		comboBoxStudentGender.setModel(new DefaultComboBoxModel<String>(new String[] { "M", "F", "N" }));
+		comboBoxStudentGender.setModel(new DefaultComboBoxModel<>(new String[] { "M", "F", "N" }));
 		comboBoxStudentGender.setMaximumRowCount(3);
 		comboBoxStudentGender.setBounds(194, 229, 40, 22);
 
@@ -320,7 +321,7 @@ public class StudentManagement extends JPanel {
 
 		JComboBox<String> comboBoxStudentGenderUpdate = new JComboBox<>(genderChar);
 		comboBoxStudentGenderUpdate.setToolTipText("Select a gender.");
-		comboBoxStudentGenderUpdate.setModel(new DefaultComboBoxModel<String>(new String[] { "M", "F", "N" }));
+		comboBoxStudentGenderUpdate.setModel(new DefaultComboBoxModel<>(new String[] { "M", "F", "N" }));
 		comboBoxStudentGenderUpdate.setSelectedIndex(0);
 		comboBoxStudentGenderUpdate.setBounds(190, 262, 44, 22);
 		updateStudentPanel.add(comboBoxStudentGenderUpdate);
@@ -459,6 +460,7 @@ public class StudentManagement extends JPanel {
 		// This button is used to show the student_tb table
 		JButton btnNewButton = new JButton("Show Students");
 		btnNewButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				if (bd.getConnection()) {
@@ -475,7 +477,7 @@ public class StudentManagement extends JPanel {
 		btnNewButton.setBounds(10, 11, 136, 23);
 		viewStudentsPanel.add(btnNewButton);
 
-		JTabbedPane deleteStudentTP = new JTabbedPane(JTabbedPane.TOP);
+		JTabbedPane deleteStudentTP = new JTabbedPane(SwingConstants.TOP);
 		tabbedPane.addTab("Delete Student", null, deleteStudentTP, null);
 
 		JPanel deleteStudentPanel = new JPanel();
@@ -503,10 +505,11 @@ public class StudentManagement extends JPanel {
 		/*
 		 * The ideal scenario would be to create a condition in which when a table is
 		 * empty a row is added to the table
-		 * 
+		 *
 		 */
 		JButton deleteButton = new JButton("Delete");
 		deleteButton.addActionListener(new ActionListener() {
+			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
 				if (bd.getConnection()) {

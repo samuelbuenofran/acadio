@@ -16,13 +16,16 @@ import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import professor.DashboardProfessor;
+import services.BD;
 
 /**
  * EN: This class represents the login screen for the Professor user type. PT:
  * Esta classe representa a tela de login para o tipo de usuário Professor.
+ * 
  */
 public class LoginProfessor extends JFrame {
 
+	private BD bd;
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField idField;
@@ -88,19 +91,51 @@ public class LoginProfessor extends JFrame {
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// Implement login logic here
-				System.out.println("Login attempted with username: " + idField.getText() + ", password: (hidden)");
-				// Simple login logic in order to move to the next screen
-				// This should be replaced with a real login logic
-				if (idField.getText().equals("admin") && new String(passwordField.getPassword()).equals("admin")) {
-					// Open the next screen
-					System.out.println("Login successful!");
-					dispose();
-					DashboardProfessor dp = new DashboardProfessor();
-					dp.setVisible(true);
-				} else {
-					System.out.println("Login failed!");
+
+				/*
+				 * // Implement login logic here
+				 * System.out.println("Login attempted with username: " + idField.getText() +
+				 * ", password: (hidden)"); // Simple login logic in order to move to the next
+				 * screen // This should be replaced with a real login logic if
+				 * (idField.getText().equals("admin") && new
+				 * String(passwordField.getPassword()).equals("admin")) { // Open the next
+				 * screen System.out.println("Login successful!"); dispose(); DashboardProfessor
+				 * dp = new DashboardProfessor(); dp.setVisible(true); } else {
+				 * System.out.println("Login failed!"); }
+				 * 
+				 */
+
+				// Now that we have a functioning database, it's time to implement the login
+				// logic
+				// There will be no ProfessorDAO class in this example, the logic only makes a
+				// query to the professor_tb table in the database and compares the password
+				// entered by the user with the password stored there;
+				bd = new BD();
+				if (bd.getConnection()) {
+					// If the connection is successful, the query is made
+					String query = "SELECT * FROM professor_tb WHERE professor_id = ? AND professor_password = ?";
+					try {
+						bd.st = bd.con.prepareStatement(query);
+						bd.st.setString(1, idField.getText());
+						bd.st.setString(2, new String(passwordField.getPassword()));
+						bd.rs = bd.st.executeQuery();
+						if (bd.rs.next()) {
+							System.out.println("Login successful!");
+							dispose();
+							DashboardProfessor dp = new DashboardProfessor();
+							dp.setVisible(true);
+						} else {
+							System.out.println("Login failed!");
+						}
+					} catch (Exception error) {
+						System.out.println("Error: " + error.toString());
+
+					} finally {
+						bd.close();
+					}
 				}
+				// If the connection is successful, the query is made
+
 			}
 		});
 		loginButton.setBounds(23, 101, 89, 23);

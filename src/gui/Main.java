@@ -31,7 +31,7 @@ public class Main extends JWindow {
 	/**
 	 * EN: Constructor for the Main class. It sets the size and layout of the
 	 * window, and loads the images.
-	 * 
+	 *
 	 * PT: Construtor para a classe Main. Define o tamanho e layout da janela, e
 	 * carrega as imagens.
 	 */
@@ -97,7 +97,7 @@ public class Main extends JWindow {
 	 * EN: Paint method to draw the images on the window. This method is necessary
 	 * so the images can be rendered nicely to the screen. There are other ways of
 	 * doing this but, the quality of the images aren't as good.
-	 * 
+	 *
 	 * PT: Método paint para desenhar as imagens na janela. Este método é necessário
 	 * para que as imagens possam ser renderizadas corretamente na tela. Existem
 	 * outras maneiras de fazer isso, mas a qualidade das imagens não é tão boa.
@@ -125,9 +125,9 @@ public class Main extends JWindow {
 
 	/**
 	 * EN: Method to load an image from a file path.
-	 * 
+	 *
 	 * PT: Método para carregar uma imagem de um caminho de arquivo.
-	 * 
+	 *
 	 * @param path The path to the image file. O caminho para o arquivo de imagem.
 	 * @return The image loaded from the file path. A imagem carregada do caminho do
 	 *         arquivo.
@@ -143,9 +143,9 @@ public class Main extends JWindow {
 
 	/**
 	 * EN: Main method to start the application.
-	 * 
+	 *
 	 * PT: Método principal para iniciar a aplicação.
-	 * 
+	 *
 	 * @param args The command line arguments. Os argumentos da linha de comando.
 	 */
 	public static void main(String[] args) {
