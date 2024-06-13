@@ -20,13 +20,26 @@ import org.eclipse.wb.swing.FocusTraversalOnArray;
 
 import services.BD;
 
+/**
+ * EN: This class represents the dashboard for the Professor user type. PT: Esta
+ * classe representa o painel de controle para o tipo de usuário Professor.
+ */
 public class DashboardProfessor extends JFrame {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JPanel mainContentPanel;
 	private CardLayout cardLayout;
 
+	/**
+	 * EN: The main method for the DashboardProfessor class. It creates the window
+	 * and sets its visibility. PT: O método principal para a classe
+	 * DashboardProfessor. Ele cria a janela e define sua visibilidade.
+	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			@Override
@@ -41,6 +54,11 @@ public class DashboardProfessor extends JFrame {
 		});
 	}
 
+	/**
+	 * EN: Constructor for the DashboardProfessor class. It creates the frame and
+	 * its content. PT: Construtor para a classe DashboardProfessor. Ele cria a
+	 * janela e seu conteúdo.
+	 */
 	public DashboardProfessor() {
 		setResizable(true);
 		setTitle("Dashboard Professor");

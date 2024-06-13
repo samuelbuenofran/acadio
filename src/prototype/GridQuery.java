@@ -15,10 +15,14 @@ import javax.swing.table.DefaultTableModel;
 import services.BD;
 import services.MyTableModel;
 
+/**
+ * EN: This class is responsible for creating a grid query. PT: Esta classe é
+ * responsável por criar uma consulta em grade.
+ */
 public class GridQuery extends JFrame {
 
 	/**
-	 *
+	 * EN: Default serial version ID. PT: ID de versão serial padrão.
 	 */
 	private static final long serialVersionUID = 1L;
 	private JTable studentTable;
@@ -27,6 +31,10 @@ public class GridQuery extends JFrame {
 	private JTextField filterTF;
 	private BD bd;
 
+	/**
+	 * EN: Constructor for the GridQuery class. PT: Construtor para a classe
+	 * GridQuery.
+	 */
 	public GridQuery() {
 		setTitle("Search for students:");
 		setBounds(100, 100, 600, 500);
@@ -65,6 +73,9 @@ public class GridQuery extends JFrame {
 		});
 	}
 
+	/**
+	 * EN: Method to load the table. PT: Método para carregar a tabela.
+	 */
 	private void loadTable() {
 		String sql = "SELECT * FROM student_tb";
 		model = MyTableModel.getModel(bd, sql);
@@ -74,6 +85,11 @@ public class GridQuery extends JFrame {
 
 	}
 
+	/**
+	 * EN: The main method for the GridQuery class. It creates the window and sets
+	 * its visibility. PT: O método principal para a classe GridQuery. Ele cria a
+	 * janela e define sua visibilidade.
+	 */
 	public static void main(String[] args) {
 		GridQuery gq = new GridQuery();
 		gq.setVisible(true);

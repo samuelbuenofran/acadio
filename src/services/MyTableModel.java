@@ -18,6 +18,13 @@ import javax.swing.table.DefaultTableModel;
 public class MyTableModel {
 	private static DefaultTableModel tableModel;
 
+	/**
+	 * EN: Method to get the table model. PT: Método para obter o modelo de tabela.
+	 * 
+	 * @param bd
+	 * @param sql
+	 * @return
+	 */
 	public static DefaultTableModel getModel(BD bd, String sql) {
 		try {
 			Vector<String> header = new Vector<>();

@@ -12,14 +12,15 @@ import javax.swing.JLabel;
 import javax.swing.JWindow;
 
 /**
- * EN: This is the main class which starts the application with a splash screen
- * with a .gif loading icon. PT: Esta é a classe principal que inicia a
- * aplicação com uma tela de apresentação com um ícone de carregamento .gif.
+ * EN: This is the main class which starts the application with a splash-screen
+ * and a .gif loading icon. PT: Esta é a classe principal que inicia a aplicação
+ * com uma tela de apresentação com um ícone de carregamento em .gif.
  */
 public class Main extends JWindow {
 
-	// Create variables to store the images
+	// Create variables to store the background image
 	private BufferedImage backgroundImage;
+	// Create a variable to store the loading icon
 	private ImageIcon loadingIcon;
 
 	/**

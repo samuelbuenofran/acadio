@@ -1,7 +1,16 @@
+// InsertStudent.java
 package professor;
 
+/**
+ * EN: This class is responsible for inserting a student into the database. PT:
+ * Esta classe é responsável por inserir um aluno no banco de dados.
+ */
 public class InsertStudent {
 
+	/**
+	 * EN: the main method for the InsertStudent class. PT: O método principal para
+	 * a classe InsertStudent.
+	 */
 	public static void main(String[] args) {
 
 		// Testing to see if the Student class works

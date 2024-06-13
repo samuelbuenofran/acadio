@@ -25,6 +25,11 @@ import com.toedter.calendar.JDateChooser;
 import services.BD;
 import services.MyTableModel;
 
+/**
+ * EN: This class represents the student management screen for the Professor
+ * user type. PT: Esta classe representa a tela de gerenciamento de alunos para
+ * o tipo de usuário Professor.
+ */
 public class StudentManagement extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -60,7 +65,9 @@ public class StudentManagement extends JPanel {
 //	private final JButton button = new JButton("New button");
 
 	/**
-	 * Create the panel. This is the constructor method for the class
+	 * EN: Create the panel. This is the constructor method for the class that will
+	 * create the panel. PT: Cria o painel. Este é o método construtor para a classe
+	 * que irá criar o painel.
 	 */
 	public StudentManagement() {
 		setLayout(null);

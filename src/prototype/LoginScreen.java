@@ -1,3 +1,4 @@
+// Purpose: Login screen for the Professor user type.
 package prototype;
 
 import java.awt.EventQueue;
@@ -18,6 +19,10 @@ import javax.swing.border.EmptyBorder;
 import gui.HelpWindow;
 import professor.DashboardProfessor;
 
+/**
+ * EN: This class represents the login screen for the Professor user type. PT:
+ * Esta classe representa a tela de login para o tipo de usuário Professor.
+ */
 public class LoginScreen extends JFrame {
 
 	private static final long serialVersionUID = 1L;
@@ -29,7 +34,7 @@ public class LoginScreen extends JFrame {
 	private JPasswordField passwordField;
 
 	/**
-	 * Launch the application.
+	 * EN: Launch the application. PT: Inicia a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -46,7 +51,7 @@ public class LoginScreen extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * EN: Create the frame. PT: Cria a janela.
 	 */
 	public LoginScreen() {
 		super("Login");

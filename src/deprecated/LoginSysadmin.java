@@ -14,6 +14,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * EN: This class is deprecated and will be removed in the future. PT: Esta
+ * classe está obsoleta e será removida no futuro.
+ */
 public class LoginSysadmin extends JFrame {
 
 	/**
@@ -21,6 +25,13 @@ public class LoginSysadmin extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * EN: Constructor for the LoginProfessor class. It sets the size and layout of
+	 * the window, and loads the images.
+	 *
+	 * PT: Construtor para a classe LoginProfessor. Define o tamanho e layout da
+	 * janela, e carrega as imagens.
+	 */
 	public LoginSysadmin() {
 		super("Login");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -52,7 +63,18 @@ public class LoginSysadmin extends JFrame {
 
 		// Button panel
 		JPanel buttonPanel = new JPanel();
+		// Login button
 		JButton loginButton = new JButton("Login");
+
+		// Implement login logic here
+
+		// Add action listener to login button
+
+		// Lambda expression to add action listener to button
+
+		/**
+		 * EN: Lambda expression to add action listener to button. PT: Expressão lambda
+		 */
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

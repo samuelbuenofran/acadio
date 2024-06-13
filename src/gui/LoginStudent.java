@@ -17,18 +17,43 @@ import javax.swing.border.EmptyBorder;
 
 import professor.DashboardProfessor;
 
+/**
+ * EN: This class represents the login screen for the Professor user type. PT:
+ * Esta classe representa a tela de login para o tipo de usuário Professor.
+ * 
+ */
 public class LoginStudent extends JFrame {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
+
+	// EN: Create a panel to store the content. PT: Cria um painel para armazenar o
+	// conteúdo.
 	private JPanel contentPane;
+
+	// EN: Create the text field for the Student ID. PT: Cria o campo de texto
+	// para o ID do Estudante.
 	private JTextField idField;
+
+	// EN: Create the buttons for the login, help and cancel actions. PT: Cria os
+	// botões para as ações de login, ajuda e cancelar.
 	private JButton loginButton;
 	private JButton helpButton;
 	private JButton cancelButton;
+
+	// EN: Create the password field for the Student password. PT: Cria o campo de
+	// senha para a senha do Estudante.
+	// EN: Note that the password field is of different type than the ID field. PT:
+	// Note que o campo de senha é de um tipo diferente do campo de ID.
 	private JPasswordField passwordField;
 
 	/**
-	 * Launch the application.
+	 * EN: The main method for the LoginStudent class. It creates the window and
+	 * sets its visibility. PT: O método principal para a classe LoginStudent. Ele
+	 * cria a janela e define sua visibilidade.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -45,7 +70,9 @@ public class LoginStudent extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * EN: Constructor for the LoginStudent class. It sets the size and layout of
+	 * the window, and loads the images. PT: Construtor para a classe LoginStudent.
+	 * Define o tamanho e layout da janela, e carrega as imagens.
 	 */
 	public LoginStudent() {
 		super("Login");

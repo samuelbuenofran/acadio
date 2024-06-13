@@ -20,11 +20,17 @@ import javax.swing.border.EmptyBorder;
  */
 public class SelectUserType extends JFrame {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * EN: The main method for the SelectUserType class. It creates the window and
+	 * sets its visibility. PT: O método principal para a classe SelectUserType. Ele
+	 * cria a janela e define sua visibilidade.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -41,7 +47,9 @@ public class SelectUserType extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * EN: Constructor for the SelectUserType class. It creates the frame and its
+	 * content. PT: Construtor para a classe SelectUserType. Ele cria a janela e seu
+	 * conteúdo.
 	 */
 	public SelectUserType() {
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

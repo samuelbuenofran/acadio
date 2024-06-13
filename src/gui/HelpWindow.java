@@ -14,11 +14,15 @@ import javax.swing.border.EmptyBorder;
  */
 public class HelpWindow extends JFrame {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
 	/**
-	 * Launch the application.
+	 * EN: Launch the application. PT: Inicia a aplicação.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -35,7 +39,8 @@ public class HelpWindow extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * EN: Create the frame. PT: Cria a janela.
+	 * 
 	 */
 	public HelpWindow() {
 		setDefaultCloseOperation(WindowConstants.HIDE_ON_CLOSE);

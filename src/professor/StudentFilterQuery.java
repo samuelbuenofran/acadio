@@ -7,13 +7,23 @@ import javax.swing.JOptionPane;
 
 import services.BD;
 
+/**
+ * EN: This class represents the filter query for the Student entity. PT: Esta
+ * classe representa a consulta de filtro para a entidade Estudante.
+ */
 public class StudentFilterQuery extends JFrame {
 
 	/**
-	 *
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * EN: The main method for the StudentFilterQuery class. It creates the window
+	 * and sets its visibility. PT: O método principal para a classe
+	 * StudentFilterQuery. Ele cria a janela e define sua visibilidade.
+	 */
 	public static void main(String[] args) {
 		BD bd = new BD();
 		if (bd.getConnection()) {

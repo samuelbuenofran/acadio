@@ -14,6 +14,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * EN: This class is deprecated and will be removed in the future. PT: Esta
+ * classe está obsoleta e será removida no futuro.
+ */
 public class LoginStudent extends JFrame {
 
 	/**
@@ -21,6 +25,13 @@ public class LoginStudent extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * EN: Constructor for the LoginProfessor class. It sets the size and layout of
+	 * the window, and loads the images.
+	 *
+	 * PT: Construtor para a classe LoginProfessor. Define o tamanho e layout da
+	 * janela, e carrega as imagens.
+	 */
 	public LoginStudent() {
 		super("Login");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -53,6 +64,15 @@ public class LoginStudent extends JFrame {
 		// Button panel
 		JPanel buttonPanel = new JPanel();
 		JButton loginButton = new JButton("Login");
+
+		// Implement login logic when button is clicked
+		// Lambda expression to add action listener to button
+
+		/**
+		 * EN: This is the action listener for the login button. It prints the username
+		 * and password to the console. PT: Este é o action listener para o botão de
+		 * login. Ele imprime o nome de usuário e a senha no console.
+		 */
 		loginButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

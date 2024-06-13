@@ -7,15 +7,34 @@ import javax.swing.JOptionPane;
 
 import services.BD;
 
+/**
+ * EN: This class represents the Data Access Object (DAO) for the Student
+ * entity. PT: Esta classe representa o Objeto de Acesso a Dados (DAO) para a
+ * entidade Estudante.
+ */
 public class StudentDAO {
 
+	// Database connection
 	private BD bd;
 	private String sql, msg;
 
+	/**
+	 * EN: Constructor for the StudentDAO class that initializes the database
+	 * object. PT: Construtor para a classe StudentDAO que inicializa o objeto de
+	 * banco de dados.
+	 */
 	public StudentDAO() {
 		bd = new BD();
 	}
 
+	/**
+	 * EN: Method to write a student to the database. PT: Método para escrever um
+	 * aluno no banco de dados.
+	 * 
+	 * @param student The student object to be written. O objeto aluno a ser
+	 *                escrito.
+	 * @return The message to be displayed. A mensagem a ser exibida.
+	 */
 	public String write(Student student) {
 		// Prepares a SQL insert statement
 		sql = "INSERT INTO student_tb VALUES (?,?,?,?,?,?,?,?,?,?)";
@@ -71,6 +90,13 @@ public class StudentDAO {
 		return msg;
 	}
 
+	/**
+	 * EN: Method to delete a student from the database. PT: Método para excluir um
+	 * aluno do banco de dados.
+	 * 
+	 * @param id The student ID to be deleted. O ID do aluno a ser excluído.
+	 * @return The message to be displayed. A mensagem a ser exibida.
+	 */
 	public String delete(int id) {
 		sql = "DELETE FROM student_tb WHERE student_id = ?";
 		bd.getConnection();
@@ -92,6 +118,12 @@ public class StudentDAO {
 		return msg;
 	}
 
+	/**
+	 * EN: Method to retrieve a list of students from the database. PT: Método para
+	 * recuperar uma lista de alunos do banco de dados.
+	 * 
+	 * @return The list of students. A lista de alunos.
+	 */
 	public List<Student> get() {
 		return null;
 	}

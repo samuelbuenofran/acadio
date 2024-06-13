@@ -1,4 +1,5 @@
 package deprecated;
+
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,6 +14,10 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
+/**
+ * EN: This class is deprecated and will be removed in the future. PT: Esta
+ * classe está obsoleta e será removida no futuro.
+ */
 public class LoginScreen extends JFrame {
 
 	/**
@@ -20,6 +25,13 @@ public class LoginScreen extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	/**
+	 * EN: Constructor for the LoginProfessor class. It sets the size and layout of
+	 * the window, and loads the images.
+	 *
+	 * PT: Construtor para a classe LoginProfessor. Define o tamanho e layout da
+	 * janela, e carrega as imagens.
+	 */
 	public LoginScreen() {
 		super("Login");
 		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

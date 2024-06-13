@@ -1,5 +1,6 @@
 package gui;
 
+// EN: Importing the necessary classes for the GUI. PT: Importando as classes necessárias para a GUI.
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,8 +18,16 @@ import javax.swing.border.EmptyBorder;
 
 import professor.DashboardProfessor;
 
+/**
+ * EN: This class represents the login screen for the Professor user type. PT:
+ * Esta classe representa a tela de login para o tipo de usuário Professor.
+ */
 public class LoginSysadmin extends JFrame {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 	private JTextField idField;
@@ -28,7 +37,9 @@ public class LoginSysadmin extends JFrame {
 	private JPasswordField passwordField;
 
 	/**
-	 * Launch the application.
+	 * EN: The main class for the LoginSysadmin class. It creates the window and
+	 * sets its visibility. PT: A classe principal para a classe LoginSysadmin. Ela
+	 * cria a janela e define sua visibilidade.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -45,7 +56,9 @@ public class LoginSysadmin extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * EN: Constructor for the LoginSysadmin class. It creates the frame and its
+	 * content. PT: Construtor para a classe LoginSysadmin. Ele cria a janela e seu
+	 * conteúdo.
 	 */
 	public LoginSysadmin() {
 		super("Login");

@@ -14,7 +14,14 @@ import javax.swing.border.EmptyBorder;
  */
 public class AboutWindow extends JFrame {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
+
+	// EN: Create a panel to store the content. PT: Cria um painel para armazenar o
+	// conteúdo.
 	private JPanel contentPane;
 
 	/**

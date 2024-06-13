@@ -8,12 +8,23 @@ import javax.swing.JPanel;
 
 import services.BD;
 
+/**
+ * EN: This class represents the main dashboard panel for the Professor user
+ * type. PT: Esta classe representa o painel principal do painel de controle
+ * para o tipo de usuário Professor.
+ */
 public class MainDashboardPanel extends JPanel {
 
+	/**
+	 * EN: Serial version UID for serialization. PT: UID de versão serial para a
+	 * serialização.
+	 */
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Create the panel.
+	 * EN: Constructor for the MainDashboardPanel class. It creates the panel and
+	 * its content. PT: Construtor para a classe MainDashboardPanel. Ele cria o
+	 * painel e seu conteúdo.
 	 */
 	public MainDashboardPanel() {
 		setLayout(null);
@@ -47,6 +58,11 @@ public class MainDashboardPanel extends JPanel {
 
 	}
 
+	/**
+	 * EN: The main method for the MainDashboardPanel class. It creates the window
+	 * and sets its visibility. PT: O método principal para a classe
+	 * MainDashboardPanel. Ele cria a janela e define sua visibilidade.
+	 */
 	public static void main(String[] args) {
 		BD bd = new BD();
 		if (bd.getConnection()) {
